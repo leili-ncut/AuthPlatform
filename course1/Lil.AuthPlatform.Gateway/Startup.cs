@@ -31,8 +31,6 @@ namespace Lil.AuthPlatform.Gateway
 
             services.AddOcelot().AddAhphOcelot(options =>
             {
-                //Data Source=ServerName;Integrated Security=SSPI;Initial Catalog=Northwind
-                //Data Source=LJY-DUDU\\MSSQLSERVER01\\AphpOcelot;Integrated Security=True;
                 options.DbConnectionStrings = "Data Source=LJY-DUDU\\MSSQLSERVER01;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
             });
         }
