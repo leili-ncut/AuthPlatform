@@ -21,6 +21,8 @@ namespace Lil.AuthPlatform.AhphOcelot.Middleware
                 resolver => resolver.GetRequiredService<IOptions<AhphOcelotConfiguration>>().Value);
             //文件仓储注入 
             builer.Services.AddSingleton<IFileConfigurationRepository, SqlServerFileConfigurationRepository>();
+            //注册后端服务
+            builer.Services.AddHostedService<DbConfigurationPoller>();
             return builer;
         }
     }

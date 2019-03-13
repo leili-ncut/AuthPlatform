@@ -31,7 +31,11 @@ namespace Lil.AuthPlatform.Gateway
 
             services.AddOcelot().AddAhphOcelot(options =>
             {
-                options.DbConnectionStrings = "Data Source=LJY-DUDU\\MSSQLSERVER01;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
+                //options.DbConnectionStrings = "Data Source=LJY-DUDU\\MSSQLSERVER01;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
+                options.DbConnectionStrings = "Data Source=LIL-AS-P2;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
+                // 
+                options.EnableTimer = true;
+                options.TimerDelay = 1000 * 10;
             });
         }
 
