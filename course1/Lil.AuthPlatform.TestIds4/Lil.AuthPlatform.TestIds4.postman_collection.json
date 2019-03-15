@@ -1,0 +1,84 @@
+{
+  //调用identityserver，获取token，直接导入此文件到postman中
+  "info": {
+    "_postman_id": "e62d3791-554e-4173-8aab-e7503639cfdc",
+    "name": "Lil.AuthPlatform.TestIds4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "http://localhost:6611/connect/token",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "client_id",
+              "value": "client2",
+              "type": "text"
+            },
+            {
+              "key": "client_secret",
+              "value": "secret2",
+              "type": "text"
+            },
+            {
+              "key": "Grant_Type",
+              "value": "client_credentials",
+              "type": "text"
+            },
+            {
+              "key": "scope",
+              "value": "gateway_admin",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:6611/connect/token?",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "6611",
+          "path": [
+            "connect",
+            "token"
+          ],
+          "query": [
+            {
+              "key": "client_id",
+              "value": "client2",
+              "disabled": true
+            },
+            {
+              "key": "client_secret",
+              "value": "secret2",
+              "disabled": true
+            },
+            {
+              "key": "Grant_Type",
+              "value": "client_credentials",
+              "disabled": true
+            },
+            {
+              "key": "scope",
+              "value": "gateway_admin",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
