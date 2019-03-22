@@ -40,7 +40,8 @@ namespace Lil.AuthPlatform.Gateway
             {
                 //options.DbConnectionStrings = "Data Source=LJY-DUDU\\MSSQLSERVER01;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
                 options.DbConnectionStrings = "Data Source=LIL-AS-P2;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
-                // 
+                options.RedisConnectionStrings = new List<string>() {         "127.0.0.1:6379,defaultDatabase=0,poolsize=50,ssl=false,writeBuffer=10240,connectTimeout=1000,connectRetry=1;"
+                };
                 //options.EnableTimer = true;
                 //options.TimerDelay = 1000 * 10;
             })

@@ -21,7 +21,7 @@ namespace Lil.AuthPlatform.TestService.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            return id + "-" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         // POST api/values
