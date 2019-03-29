@@ -50,7 +50,9 @@ namespace Lil.AuthPlatform.AhphOcelot.Middleware
         {
             var pipelineBuilder = new OcelotPipelineBuilder(builder.ApplicationServices);
 
-            pipelineBuilder.BuildOcelotPipeline(pipelineConfiguration);
+            //pipelineBuilder.BuildOcelotPipeline(pipelineConfiguration);
+            //使用自定义管道扩展 
+            pipelineBuilder.BuildAhphOcelotPipeline(pipelineConfiguration);
 
             var firstDelegate = pipelineBuilder.Build();
 

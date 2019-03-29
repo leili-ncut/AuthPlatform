@@ -44,6 +44,7 @@ namespace Lil.AuthPlatform.Gateway
                 };
                 //options.EnableTimer = true;
                 //options.TimerDelay = 1000 * 10;
+                options.ClientAuthorization = true;
             })
                 .AddAdministration("/CtrOcelot",option);
         }

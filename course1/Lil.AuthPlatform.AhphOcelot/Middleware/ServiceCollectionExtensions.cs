@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Lil.AuthPlatform.AhphOcelot.Authentication;
 using Lil.AuthPlatform.AhphOcelot.Cache;
+using Lil.AuthPlatform.AhphOcelot.Configuration;
+using Lil.AuthPlatform.AhphOcelot.DataBase.SqlServer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Ocelot.Cache;
@@ -16,22 +19,27 @@ namespace Lil.AuthPlatform.AhphOcelot.Middleware
     /// </summary>
     public static class ServiceCollectionExtensions
     {
-        public static IOcelotBuilder AddAhphOcelot(this IOcelotBuilder builer, Action<AhphOcelotConfiguration> action)
+        public static IOcelotBuilder AddAhphOcelot(this IOcelotBuilder builder, Action<AhphOcelotConfiguration> action)
         {
-            builer.Services.Configure(action);
+            builder.Services.Configure(action);
             //配置信息
-            builer.Services.AddSingleton(
+            builder.Services.AddSingleton(
                 resolver => resolver.GetRequiredService<IOptions<AhphOcelotConfiguration>>().Value);
             //文件仓储注入 
-            builer.Services.AddSingleton<IFileConfigurationRepository, SqlServerFileConfigurationRepository>();
+            builder.Services.AddSingleton<IFileConfigurationRepository, SqlServerFileConfigurationRepository>();
+            builder.Services.AddSingleton<IClientAuthenticationRepository, SqlServerClientAuthenticationRepository>();
             //注册后端服务
-            builer.Services.AddHostedService<DbConfigurationPoller>();
+            builder.Services.AddHostedService<DbConfigurationPoller>();
             //使用Redis重写缓存
             //builder.Services.AddSingleton(typeof(IOcelotCache<>), typeof(InRedisCache<>));
-            builer.Services.AddSingleton<IOcelotCache<FileConfiguration>, InRedisCache<FileConfiguration>>();
-            builer.Services.AddSingleton<IOcelotCache<CachedResponse>, InRedisCache<CachedResponse>>();
-            builer.Services.AddSingleton<IInternalConfigurationRepository, RedisInternalConfigurationRepository>();
-            return builer;
+            builder.Services.AddSingleton<IOcelotCache<FileConfiguration>, InRedisCache<FileConfiguration>>();
+            builder.Services.AddSingleton<IOcelotCache<CachedResponse>, InRedisCache<CachedResponse>>();
+            builder.Services.AddSingleton<IInternalConfigurationRepository, RedisInternalConfigurationRepository>();
+            builder.Services.AddSingleton<IOcelotCache<ClientRoleModel>, InRedisCache<ClientRoleModel>>();
+            //注入授权
+            builder.Services.AddSingleton<IAhphAuthenticationProcessor, AhphAuthenticationProcessor>();
+
+            return builder;
         }
     }
 }
