@@ -5,12 +5,15 @@ using Lil.AuthPlatform.AhphOcelot.Authentication;
 using Lil.AuthPlatform.AhphOcelot.Cache;
 using Lil.AuthPlatform.AhphOcelot.Configuration;
 using Lil.AuthPlatform.AhphOcelot.DataBase.SqlServer;
+using Lil.AuthPlatform.AhphOcelot.RateLimit;
+using Lil.AuthPlatform.AhphOcelot.Responder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Ocelot.Cache;
 using Ocelot.Configuration.File;
 using Ocelot.Configuration.Repository;
 using Ocelot.DependencyInjection;
+using Ocelot.Responder;
 
 namespace Lil.AuthPlatform.AhphOcelot.Middleware
 {
@@ -36,8 +39,15 @@ namespace Lil.AuthPlatform.AhphOcelot.Middleware
             builder.Services.AddSingleton<IOcelotCache<CachedResponse>, InRedisCache<CachedResponse>>();
             builder.Services.AddSingleton<IInternalConfigurationRepository, RedisInternalConfigurationRepository>();
             builder.Services.AddSingleton<IOcelotCache<ClientRoleModel>, InRedisCache<ClientRoleModel>>();
+            builder.Services.AddSingleton<IOcelotCache<RateLimitRuleModel>, InRedisCache<RateLimitRuleModel>>();
+            builder.Services.AddSingleton<IOcelotCache<AhphClientRateLimitCounter?>, InRedisCache<AhphClientRateLimitCounter?>>();
+
             //注入授权
             builder.Services.AddSingleton<IAhphAuthenticationProcessor, AhphAuthenticationProcessor>();
+            // 注入限流
+            builder.Services.AddSingleton<IClientRateLimitRepository, SqlServerClientRateLimitRepository>();
+            //重写错误状态码
+            builder.Services.AddSingleton<IErrorsToHttpStatusCodeMapper, AhphErrorsToHttpStatusCodeMapper>();
 
             return builder;
         }
