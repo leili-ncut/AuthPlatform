@@ -1,0 +1,26 @@
+﻿USE [AphpOcelot]
+GO
+SET IDENTITY_INSERT [dbo].[AhphConfigReRoutes] ON 
+GO
+INSERT [dbo].[AhphConfigReRoutes] ([CtgRouteId], [AhphId], [ReRouteId]) VALUES (1, 1, 1)
+GO
+SET IDENTITY_INSERT [dbo].[AhphConfigReRoutes] OFF
+GO
+SET IDENTITY_INSERT [dbo].[AhphGlobalConfiguration] ON 
+GO
+INSERT [dbo].[AhphGlobalConfiguration] ([AhphId], [GatewayName], [RequestIdKey], [BaseUrl], [DownstreamScheme], [ServiceDiscoveryProvider], [LoadBalancerOptions], [HttpHandlerOptions], [QoSOptions], [IsDefault], [InfoStatus]) VALUES (1, N'测试网关', N'test_gateway', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1)
+GO
+SET IDENTITY_INSERT [dbo].[AhphGlobalConfiguration] OFF
+GO
+SET IDENTITY_INSERT [dbo].[AhphReRoute] ON 
+GO
+INSERT [dbo].[AhphReRoute] ([ReRouteId], [ItemId], [UpstreamPathTemplate], [UpstreamHttpMethod], [UpstreamHost], [DownstreamScheme], [DownstreamPathTemplate], [DownstreamHostAndPorts], [AuthenticationOptions], [RequestIdKey], [CacheOptions], [ServiceName], [LoadBalancerOptions], [QoSOptions], [DelegatingHandlers], [Priority], [InfoStatus]) VALUES (1, 1, N'/ctr/values', N'[ "GET" ]', N'', N'http', N'/api/Values', N'[{"Host": "localhost","Port": 9000 }]', N'', N'', N'', N'', N'', N'', N'', 0, 1)
+GO
+SET IDENTITY_INSERT [dbo].[AhphReRoute] OFF
+GO
+SET IDENTITY_INSERT [dbo].[AhphReRoutesItem] ON 
+GO
+INSERT [dbo].[AhphReRoutesItem] ([ItemId], [ItemName], [ItemDetail], [ItemParentId], [InfoStatus]) VALUES (1, N'测试分类', NULL, NULL, 1)
+GO
+SET IDENTITY_INSERT [dbo].[AhphReRoutesItem] OFF
+GO

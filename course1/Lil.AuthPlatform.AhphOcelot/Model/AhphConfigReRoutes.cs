@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Lil.AuthPlatform.AhphOcelot.Model
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class AhphConfigReRoutes
     {
         [Key]

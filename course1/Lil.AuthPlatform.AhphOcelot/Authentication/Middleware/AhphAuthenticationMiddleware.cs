@@ -23,8 +23,8 @@ namespace Lil.AuthPlatform.AhphOcelot.Authentication.Middleware
         public AhphAuthenticationMiddleware(OcelotRequestDelegate next,
             IOcelotLoggerFactory loggerFactory,
             IAhphAuthenticationProcessor ahphAuthenticationProcessor,
-            AhphOcelotConfiguration options,
-            IOcelotLogger logger) : base(logger)
+            AhphOcelotConfiguration options)
+            : base(loggerFactory.CreateLogger<AhphAuthenticationMiddleware>())
         {
             _next = next;
             _ahphAuthenticationProcessor = ahphAuthenticationProcessor;

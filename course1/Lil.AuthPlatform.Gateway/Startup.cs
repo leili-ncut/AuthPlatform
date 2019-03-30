@@ -30,17 +30,21 @@ namespace Lil.AuthPlatform.Gateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            var authenticationProviderKey = "TestKey";
             Action<IdentityServerAuthenticationOptions> option = o =>
             {
                 o.Authority = "http://localhost:6611"; //IdentityServer地址
                 o.RequireHttpsMetadata = false;
                 o.ApiName = "gateway_admin"; //网关管理的名称，对应的为客户端授权的scope
             };
+            services.AddAuthentication()
+                .AddIdentityServerAuthentication(authenticationProviderKey, option);
+
             services.AddOcelot().AddAhphOcelot(options =>
             {
-                //options.DbConnectionStrings = "Data Source=LJY-DUDU\\MSSQLSERVER01;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
-                options.DbConnectionStrings = "Data Source=LIL-AS-P2;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
-                options.RedisConnectionStrings = new List<string>() {         "127.0.0.1:6379,defaultDatabase=0,poolsize=50,ssl=false,writeBuffer=10240,connectTimeout=1000,connectRetry=1;"
+                options.DbConnectionStrings = "Data Source=LJY-DUDU\\MSSQLSERVER01;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
+                //options.DbConnectionStrings = "Data Source=LIL-AS-P2;Integrated Security=SSPI;Initial Catalog=AphpOcelot";
+                options.RedisConnectionStrings = new List<string>() {         "47.94.110.149:6379,defaultDatabase=0,poolsize=50,ssl=false,writeBuffer=10240,connectTimeout=1000,connectRetry=1;"
                 };
                 //options.EnableTimer = true;
                 //options.TimerDelay = 1000 * 10;
