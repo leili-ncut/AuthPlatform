@@ -45,6 +45,7 @@ namespace Lil.AuthPlatform.AhphOcelot.Middleware
             //注入授权
             builder.Services.AddSingleton<IAhphAuthenticationProcessor, AhphAuthenticationProcessor>();
             // 注入限流
+            builder.Services.AddSingleton<IClientRateLimitProcessor, AhphClientRateLimitProcessor>();
             builder.Services.AddSingleton<IClientRateLimitRepository, SqlServerClientRateLimitRepository>();
             //重写错误状态码
             builder.Services.AddSingleton<IErrorsToHttpStatusCodeMapper, AhphErrorsToHttpStatusCodeMapper>();

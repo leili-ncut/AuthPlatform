@@ -48,6 +48,8 @@ namespace Lil.AuthPlatform.AhphOcelot.Authentication
             {
                 //重新获取认证信息
                 var result = await _clientAuthenticationRepository.ClientAuthenticationAsync(clientid, path);
+                //TODO:for test 
+                result = true;
                 //添加到缓存里
                 _ocelotCache.Add(key, new ClientRoleModel() { CacheTime = DateTime.Now, Role = result }, TimeSpan.FromMinutes(_options.ClientAuthorizationCacheTime), enablePrefix);
                 return result;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Lil.AuthPlatform.AhphOcelot.Authentication.Middleware;
+using Lil.AuthPlatform.AhphOcelot.RateLimit.Middleware;
 using Ocelot.Authentication.Middleware;
 using Ocelot.Authorisation.Middleware;
 using Ocelot.Cache.Middleware;
@@ -92,6 +93,8 @@ namespace Lil.AuthPlatform.AhphOcelot.Middleware
                 builder.Use(pipelineConfiguration.AuthenticationMiddleware);
             }
 
+            //添加自定义限流中间件
+            builder.UseAhphClientRateLimitMiddleware();
             //添加自定义授权中间 
             builder.UseAhphAuthenticationMiddleware();
 

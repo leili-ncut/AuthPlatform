@@ -8,8 +8,6 @@ using Ocelot.Responder;
 namespace Lil.AuthPlatform.AhphOcelot.Responder
 {
     /// <summary>
-    /// 金焰的世界
-    /// 2018-11-19
     /// 错误信息转换成输出状态码
     /// </summary>
     public class AhphErrorsToHttpStatusCodeMapper : IErrorsToHttpStatusCodeMapper

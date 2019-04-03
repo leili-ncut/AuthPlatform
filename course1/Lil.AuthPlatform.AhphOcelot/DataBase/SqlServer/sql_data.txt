@@ -1,113 +1,6 @@
 ﻿USE [AphpOcelot]
 GO
-SET IDENTITY_INSERT [dbo].[AhphConfigReRoutes] ON 
-GO
-INSERT [dbo].[AhphConfigReRoutes] ([CtgRouteId], [AhphId], [ReRouteId]) VALUES (1, 1, 1)
-GO
-SET IDENTITY_INSERT [dbo].[AhphConfigReRoutes] OFF
-GO
-SET IDENTITY_INSERT [dbo].[AhphGlobalConfiguration] ON 
-GO
-INSERT [dbo].[AhphGlobalConfiguration] ([AhphId], [GatewayName], [RequestIdKey], [BaseUrl], [DownstreamScheme], [ServiceDiscoveryProvider], [LoadBalancerOptions], [HttpHandlerOptions], [QoSOptions], [IsDefault], [InfoStatus]) VALUES (1, N'测试网关', N'test_gateway', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1)
-GO
-SET IDENTITY_INSERT [dbo].[AhphGlobalConfiguration] OFF
-GO
-SET IDENTITY_INSERT [dbo].[AhphReRoute] ON 
-GO
-INSERT [dbo].[AhphReRoute] ([ReRouteId], [ItemId], [UpstreamPathTemplate], [UpstreamHttpMethod], [UpstreamHost], [DownstreamScheme], [DownstreamPathTemplate], [DownstreamHostAndPorts], [AuthenticationOptions], [RequestIdKey], [CacheOptions], [ServiceName], [LoadBalancerOptions], [QoSOptions], [DelegatingHandlers], [Priority], [InfoStatus]) VALUES (1, 1, N'/ctr/values', N'[ "GET" ]', N'', N'http', N'/api/Values', N'[{"Host": "localhost","Port": 9000 }]', N'', N'', N'', N'', N'', N'', N'', 0, 1)
-GO
-SET IDENTITY_INSERT [dbo].[AhphReRoute] OFF
-GO
-SET IDENTITY_INSERT [dbo].[AhphReRoutesItem] ON 
-GO
-INSERT [dbo].[AhphReRoutesItem] ([ItemId], [ItemName], [ItemDetail], [ItemParentId], [InfoStatus]) VALUES (1, N'测试分类', NULL, NULL, 1)
-GO
-SET IDENTITY_INSERT [dbo].[AhphReRoutesItem] OFF
-GO
-------------------------------------------------------------
-
-USE [master]
-GO
-/****** Object:  Database [AphpOcelot]    Script Date: 2019/3/30 17:00:41 ******/
-CREATE DATABASE [AphpOcelot]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'AphpOcelot', FILENAME = N'D:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER01\MSSQL\DATA\AphpOcelot.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'AphpOcelot_log', FILENAME = N'D:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER01\MSSQL\DATA\AphpOcelot_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
-GO
-ALTER DATABASE [AphpOcelot] SET COMPATIBILITY_LEVEL = 140
-GO
-IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
-begin
-EXEC [AphpOcelot].[dbo].[sp_fulltext_database] @action = 'enable'
-end
-GO
-ALTER DATABASE [AphpOcelot] SET ANSI_NULL_DEFAULT OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET ANSI_NULLS OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET ANSI_PADDING OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET ANSI_WARNINGS OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET ARITHABORT OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET AUTO_CLOSE OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET AUTO_SHRINK OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET AUTO_UPDATE_STATISTICS ON 
-GO
-ALTER DATABASE [AphpOcelot] SET CURSOR_CLOSE_ON_COMMIT OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET CURSOR_DEFAULT  GLOBAL 
-GO
-ALTER DATABASE [AphpOcelot] SET CONCAT_NULL_YIELDS_NULL OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET NUMERIC_ROUNDABORT OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET QUOTED_IDENTIFIER OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET RECURSIVE_TRIGGERS OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET  DISABLE_BROKER 
-GO
-ALTER DATABASE [AphpOcelot] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET DATE_CORRELATION_OPTIMIZATION OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET TRUSTWORTHY OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET ALLOW_SNAPSHOT_ISOLATION OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET PARAMETERIZATION SIMPLE 
-GO
-ALTER DATABASE [AphpOcelot] SET READ_COMMITTED_SNAPSHOT OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET HONOR_BROKER_PRIORITY OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET RECOVERY FULL 
-GO
-ALTER DATABASE [AphpOcelot] SET  MULTI_USER 
-GO
-ALTER DATABASE [AphpOcelot] SET PAGE_VERIFY CHECKSUM  
-GO
-ALTER DATABASE [AphpOcelot] SET DB_CHAINING OFF 
-GO
-ALTER DATABASE [AphpOcelot] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
-GO
-ALTER DATABASE [AphpOcelot] SET TARGET_RECOVERY_TIME = 60 SECONDS 
-GO
-ALTER DATABASE [AphpOcelot] SET DELAYED_DURABILITY = DISABLED 
-GO
-EXEC sys.sp_db_vardecimal_storage_format N'AphpOcelot', N'ON'
-GO
-ALTER DATABASE [AphpOcelot] SET QUERY_STORE = OFF
-GO
-USE [AphpOcelot]
-GO
-/****** Object:  Table [dbo].[AhphAuthGroup]    Script Date: 2019/3/30 17:00:47 ******/
+/****** Object:  Table [dbo].[AhphAuthGroup]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -122,8 +15,9 @@ PRIMARY KEY CLUSTERED
 	[GroupId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Table [dbo].[AhphClientGroup]    Script Date: 2019/3/30 17:00:50 ******/
+/****** Object:  Table [dbo].[AhphClientGroup]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -137,8 +31,25 @@ CREATE TABLE [dbo].[AhphClientGroup](
 	[ClientGroupId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Table [dbo].[AhphClients]    Script Date: 2019/3/30 17:00:51 ******/
+/****** Object:  Table [dbo].[AhphClientLimitGroup]    Script Date: 2019/4/3 16:48:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AhphClientLimitGroup](
+	[ClientLimitGroupId] [int] IDENTITY(1,1) NOT NULL,
+	[Id] [int] NULL,
+	[LimitGroupId] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ClientLimitGroupId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AhphClients]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -184,8 +95,9 @@ PRIMARY KEY CLUSTERED
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Table [dbo].[AhphConfigReRoutes]    Script Date: 2019/3/30 17:00:53 ******/
+/****** Object:  Table [dbo].[AhphConfigReRoutes]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -199,11 +111,14 @@ CREATE TABLE [dbo].[AhphConfigReRoutes](
 	[CtgRouteId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Table [dbo].[AhphGlobalConfiguration]    Script Date: 2019/3/30 17:00:56 ******/
+/****** Object:  Table [dbo].[AhphGlobalConfiguration]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[AhphGlobalConfiguration](
 	[AhphId] [int] IDENTITY(1,1) NOT NULL,
@@ -222,11 +137,75 @@ CREATE TABLE [dbo].[AhphGlobalConfiguration](
 	[AhphId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Table [dbo].[AhphReRoute]    Script Date: 2019/3/30 17:00:57 ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[AhphLimitGroup]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[AhphLimitGroup](
+	[LimitGroupId] [int] IDENTITY(1,1) NOT NULL,
+	[LimitGroupName] [varchar](100) NOT NULL,
+	[LimitGroupDetail] [varchar](500) NULL,
+	[InfoStatus] [int] NULL,
+ CONSTRAINT [PK_AhphLimitGroup] PRIMARY KEY CLUSTERED 
+(
+	[LimitGroupId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[AhphLimitGroupRule]    Script Date: 2019/4/3 16:48:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AhphLimitGroupRule](
+	[GroupRuleId] [int] IDENTITY(1,1) NOT NULL,
+	[LimitGroupId] [int] NULL,
+	[ReRouteLimitId] [int] NULL,
+ CONSTRAINT [PK_AhphLimitGroupRule] PRIMARY KEY CLUSTERED 
+(
+	[GroupRuleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AhphLimitRule]    Script Date: 2019/4/3 16:48:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[AhphLimitRule](
+	[RuleId] [int] IDENTITY(1,1) NOT NULL,
+	[LimitName] [varchar](200) NOT NULL,
+	[LimitPeriod] [varchar](50) NOT NULL,
+	[LimitNum] [int] NULL,
+	[InfoStatus] [int] NULL,
+ CONSTRAINT [PK_AhphLimitRule] PRIMARY KEY CLUSTERED 
+(
+	[RuleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[AhphReRoute]    Script Date: 2019/4/3 16:48:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[AhphReRoute](
 	[ReRouteId] [int] IDENTITY(1,1) NOT NULL,
@@ -251,8 +230,11 @@ CREATE TABLE [dbo].[AhphReRoute](
 	[ReRouteId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Table [dbo].[AhphReRouteGroupAuth]    Script Date: 2019/3/30 17:01:01 ******/
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[AhphReRouteGroupAuth]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -266,11 +248,30 @@ CREATE TABLE [dbo].[AhphReRouteGroupAuth](
 	[AuthId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Table [dbo].[AhphReRoutesItem]    Script Date: 2019/3/30 17:01:01 ******/
+/****** Object:  Table [dbo].[AhphReRouteLimitRule]    Script Date: 2019/4/3 16:48:10 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AhphReRouteLimitRule](
+	[ReRouteLimitId] [int] IDENTITY(1,1) NOT NULL,
+	[RuleId] [int] NULL,
+	[ReRouteId] [int] NULL,
+ CONSTRAINT [PK_AhphReRouteLimitRule] PRIMARY KEY CLUSTERED 
+(
+	[ReRouteLimitId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[AhphReRoutesItem]    Script Date: 2019/4/3 16:48:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
 GO
 CREATE TABLE [dbo].[AhphReRoutesItem](
 	[ItemId] [int] IDENTITY(1,1) NOT NULL,
@@ -283,24 +284,9 @@ CREATE TABLE [dbo].[AhphReRoutesItem](
 	[ItemId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
+
 GO
-/****** Object:  Index [Relationship_4_FK]    Script Date: 2019/3/30 17:01:05 ******/
-CREATE NONCLUSTERED INDEX [Relationship_4_FK] ON [dbo].[AhphConfigReRoutes]
-(
-	[AhphId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-/****** Object:  Index [Relationship_5_FK]    Script Date: 2019/3/30 17:01:05 ******/
-CREATE NONCLUSTERED INDEX [Relationship_5_FK] ON [dbo].[AhphConfigReRoutes]
-(
-	[ReRouteId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-GO
-/****** Object:  Index [分类路由信息_FK]    Script Date: 2019/3/30 17:01:05 ******/
-CREATE NONCLUSTERED INDEX [分类路由信息_FK] ON [dbo].[AhphReRoute]
-(
-	[ItemId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+SET ANSI_PADDING OFF
 GO
 ALTER TABLE [dbo].[AhphGlobalConfiguration] ADD  DEFAULT ((0)) FOR [IsDefault]
 GO
@@ -309,6 +295,12 @@ GO
 ALTER TABLE [dbo].[AhphReRoute] ADD  DEFAULT ((1)) FOR [InfoStatus]
 GO
 ALTER TABLE [dbo].[AhphReRoutesItem] ADD  DEFAULT ((1)) FOR [InfoStatus]
+GO
+ALTER TABLE [dbo].[AhphClientLimitGroup]  WITH CHECK ADD FOREIGN KEY([LimitGroupId])
+REFERENCES [dbo].[AhphLimitGroup] ([LimitGroupId])
+GO
+ALTER TABLE [dbo].[AhphClientLimitGroup]  WITH CHECK ADD FOREIGN KEY([Id])
+REFERENCES [dbo].[AhphClients] ([Id])
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'配置路由主键' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'AhphConfigReRoutes', @level2type=N'COLUMN',@level2name=N'CtgRouteId'
 GO
@@ -389,8 +381,4 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'当前状态, 1 有效 0 无效' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'AhphReRoutesItem', @level2type=N'COLUMN',@level2name=N'InfoStatus'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'路由分类表' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'AhphReRoutesItem'
-GO
-USE [master]
-GO
-ALTER DATABASE [AphpOcelot] SET  READ_WRITE 
 GO
