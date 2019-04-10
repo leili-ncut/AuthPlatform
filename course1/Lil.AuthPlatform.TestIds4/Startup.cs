@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServer4.Dapper.Extensions;
 using IdentityServer4.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,8 +30,9 @@ namespace Lil.AuthPlatform.TestIds4
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
-                .AddInMemoryApiResources(Config.GetApiResources())
-                .AddInMemoryClients(Config.GetClients());
+//                .AddInMemoryApiResources(Config.GetApiResources())
+//                .AddInMemoryClients(Config.GetClients());
+                .AddDapperStore(options => { options.DbConnectionStrings = "server=LIL-AS-P2;database=IdentityServer4Db;trusted_connection=yes;"; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

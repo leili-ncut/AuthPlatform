@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lil.AuthPlatform.Gateway", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lil.AuthPlatform.TestService", "Lil.AuthPlatform.TestService\Lil.AuthPlatform.TestService.csproj", "{97E5E85D-10FD-42CA-91F8-10C48E3DB722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lil.AuthPlatform.TestIds4", "Lil.AuthPlatform.TestIds4\Lil.AuthPlatform.TestIds4.csproj", "{C5CB2E1A-B56C-4364-88AE-0F3380A0862E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lil.AuthPlatform.TestIds4", "Lil.AuthPlatform.TestIds4\Lil.AuthPlatform.TestIds4.csproj", "{C5CB2E1A-B56C-4364-88AE-0F3380A0862E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer4.Dapper", "IdentityServer4.Dapper\IdentityServer4.Dapper.csproj", "{D832D6A1-E3CF-4CAB-A664-FF22C161DE4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C5CB2E1A-B56C-4364-88AE-0F3380A0862E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5CB2E1A-B56C-4364-88AE-0F3380A0862E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5CB2E1A-B56C-4364-88AE-0F3380A0862E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D832D6A1-E3CF-4CAB-A664-FF22C161DE4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D832D6A1-E3CF-4CAB-A664-FF22C161DE4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D832D6A1-E3CF-4CAB-A664-FF22C161DE4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D832D6A1-E3CF-4CAB-A664-FF22C161DE4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
